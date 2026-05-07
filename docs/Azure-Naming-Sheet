@@ -1,0 +1,7 @@
+Resource Group:     rg-ssip-dev-frc-01
+Static Web App:     swa-ssip-dev-frc-01
+Function App:       func-ssip-dev-frc-01
+Storage Account:    stssipdevfrc01
+SQL Server:         sql-ssip-dev-frc-01
+SQL Database:       sqldb-ssip-dev-frc-01
+App Insights:       appi-ssip-dev-frc-01
