@@ -141,3 +141,14 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# make microsoft understand we are still configuring
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+local.settings.json
+coverage/
+.vscode/
