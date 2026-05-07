@@ -35,8 +35,8 @@
 
 
 # List of Services
-Azure Static Web Apps → frontend
-Azure Functions → backend API
-Azure SQL Database → structured incident/report data
-Azure Blob Storage → evidence files
-Application Insights / Azure Monitor → minimal observability
+- Azure Static Web Apps → frontend 
+- Azure Functions → backend API
+- Azure SQL Database → structured incident/report data
+- Azure Blob Storage → evidence files
+- Application Insights / Azure Monitor → minimal observability
