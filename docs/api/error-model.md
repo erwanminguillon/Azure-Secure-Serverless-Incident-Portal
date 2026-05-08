@@ -42,7 +42,7 @@ INTERNAL_ERROR
 500 Internal Server Error
 
 
-## Example 
+## Example  
 {
   "error": {
     "code": "VALIDATION_ERROR",
