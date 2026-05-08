@@ -1,0 +1,8 @@
+import "./functions/SubmitIncident";
+import "./functions/TrackIncident";
+import "./functions/ListIncidents";
+import "./functions/UpdateIncidents";
+import "./functions/GetIncidentById";
+import "./functions/AddIncidentComment";
+import "./functions/GetReferenceData";
+import "./functions/UploadEvidence";
