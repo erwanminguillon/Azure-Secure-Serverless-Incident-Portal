@@ -7,7 +7,7 @@ unset NODE_USE_SYSTEM_CA
 
 
 In case of cooked node version :
-$ export PATH="/c/Users/ErwanMinguillonLePag/tools/node-v22.22.2-win-x64:$PATH"
+export PATH="/c/Users/ErwanMinguillonLePag/tools/node-v22.22.2-win-x64:$PATH"
 hash -r
 which node
 node -v
