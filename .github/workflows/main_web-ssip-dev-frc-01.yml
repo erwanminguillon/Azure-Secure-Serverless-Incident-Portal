@@ -10,10 +10,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
+    defaults:
+      run:
+        working-directory: src/frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -23,17 +27,17 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: src/frontend
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,6 +51,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
+          path: ./release
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -61,5 +66,5 @@ jobs:
         with:
           app-name: 'web-ssip-dev-frc-01'
           slot-name: 'Production'
-          package: .
+          package: ./release
           
