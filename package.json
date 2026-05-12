@@ -11,5 +11,8 @@
     "dev:api": "npm run dev --workspace api",
     "build": "npm run build --workspaces",
     "lint": "npm run lint --workspaces"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.15.0"
   }
 }
