@@ -57,6 +57,6 @@ export async function getReferenceData(
 app.http("GetReferenceData", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin/reference-data",
+  route: "internal/reference-data",
   handler: getReferenceData,
 });

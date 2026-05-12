@@ -91,6 +91,6 @@ export async function getIncidentById(
 app.http("GetIncidentById", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin/incidents/{incidentId}",
+  route: "internal/incidents/{incidentId}",
   handler: getIncidentById,
 });

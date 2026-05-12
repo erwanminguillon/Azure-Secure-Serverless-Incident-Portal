@@ -82,6 +82,6 @@ export async function listIncidents(
 app.http("ListIncidents", {
   methods: ["GET"],
   authLevel: "anonymous",
-  route: "admin/incidents",
+  route: "internal/incidents",
   handler: listIncidents,
 });

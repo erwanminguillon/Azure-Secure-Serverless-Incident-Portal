@@ -88,6 +88,6 @@ export async function updateIncident(
 app.http("UpdateIncident", {
   methods: ["PATCH"],
   authLevel: "anonymous",
-  route: "admin/incidents/{incidentId}",
+  route: "internal/incidents/{incidentId}",
   handler: updateIncident,
 });

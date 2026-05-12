@@ -96,6 +96,6 @@ export async function addIncidentComment(
 app.http("AddIncidentComment", {
   methods: ["POST"],
   authLevel: "anonymous",
-  route: "admin/incidents/{incidentId}/comments",
+  route: "internal/incidents/{incidentId}/comments",
   handler: addIncidentComment,
 });
