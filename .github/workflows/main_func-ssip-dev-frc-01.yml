@@ -52,16 +52,34 @@ jobs:
           echo "=== dist tree ==="
           find dist -maxdepth 4 -type f | sort
 
-      - name: Inspect zip contents
+      - name: Create deployment zip from function app root
+        shell: bash
         run: |
-          zip release.zip ./* -r
-          unzip -l release.zip
+          ZIP_PATH="${GITHUB_WORKSPACE}/release.zip"
+          rm -f "$ZIP_PATH"
+
+          # Create zip from CONTENTS of src/api, not from the src/api folder itself.
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name 'node_modules' \
+            ! -name 'local.settings.json' \
+            ! -name 'release.zip' \
+            -print | zip -r "$ZIP_PATH" -@
+
+      - name: Inspect zip contents
+        shell: bash
+        run: |
+          unzip -l "${GITHUB_WORKSPACE}/release.zip"
+
+      - name: Validate host.json is at zip root
+        shell: bash
+        run: |
+          unzip -l "${GITHUB_WORKSPACE}/release.zip" | awk '{print $4}' | grep -x 'host.json'
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: functionapp-package
-          path: src/api/release.zip
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
