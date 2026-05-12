@@ -1,0 +1,44 @@
+name: Deploy Functions - func-ssip-dev-frc-01
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/api/**'
+      - '.github/workflows/deploy-functions.yml'
+  workflow_dispatch:
+
+env:
+  AZURE_FUNCTIONAPP_NAME: func-ssip-dev-frc-01
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: src/api
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        working-directory: src/api
+        run: npm ci
+
+      - name: Build functions
+        working-directory: src/api
+        run: npm run build
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
