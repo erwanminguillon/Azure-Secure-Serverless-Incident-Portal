@@ -1,6 +1,6 @@
 # Docs for the Azure Functions Action:
 # https://github.com/Azure/functions-action
-# More GitHub Actions for Azure:
+# More GitHub Actions for Azur:
 # https://github.com/Azure/actions
 
 name: Build and deploy Node.js project to Azure Function App - func-ssip-dev-frc-01
